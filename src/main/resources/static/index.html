@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure App</title>
+    <script>
+        async function fetchData() {
+            const response = await fetch('/api/data', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Basic ' + btoa('user:password')
+                }
+            });
+            const data = await response.json();
+            document.getElementById('data').innerText = JSON.stringify(data);
+        }
+    </script>
+</head>
+<body>
+<h1>Secure App</h1>
+<button onclick="fetchData()">Fetch Data</button>
+<pre id="data"></pre>
+</body>
+</html>
